@@ -3,6 +3,7 @@ import React, { useContext } from "react"
 import { CountryDataContext } from "../Context/CountryDataContext"
 
 
+
 const Card = ({ countryData }) => {
   const contextData = useContext(CountryDataContext)
   const Detail = (e) => {

@@ -22,6 +22,10 @@ const Navbar = () => {
       document.querySelector(".color-text").innerText = "Light Mode"
       document.body.parentElement.classList.add("dark")
     }
+    document.addEventListener("keypress", (e)=>{
+      if(e.key === "/")
+        document.querySelector("#search").focus()
+    })
   }, [])
   
 
