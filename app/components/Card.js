@@ -1,16 +1,11 @@
 "use client"
-import React, { useContext } from "react"
-import { CountryDataContext } from "../Context/CountryDataContext"
+import React from "react"
 
 
 
 const Card = ({ countryData }) => {
-  const contextData = useContext(CountryDataContext)
-  const Detail = (e) => {
-    console.log(contextData.allData)
-  }
   return (
-    <div className="country-card shadow-lg w-fit bg-white dark:bg-[#2b3945] pb-2 rounded-md cursor-pointer hover:scale-[1.1] transition duration-300" onClick={Detail}>
+    <div className="country-card shadow-lg w-fit bg-white dark:bg-[#2b3945] pb-2 rounded-md cursor-pointer hover:scale-[1.1] transition duration-300" >
       <div className="image-container overflow-hidden">
         <img
           src={countryData.flags.svg}
