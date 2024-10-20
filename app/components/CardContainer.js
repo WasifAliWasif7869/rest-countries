@@ -5,6 +5,7 @@ import { CountryDataContext } from "../Context/CountryDataContext"
 import { IoSearch } from "react-icons/io5"
 import { IoIosArrowDown } from "react-icons/io"
 import Link from "next/link"
+import { FaArrowUp } from "react-icons/fa6"
 
 const CardContainer = ({ data }) => {
   const [allData, setAllData] = useState(data)
@@ -133,6 +134,7 @@ const CardContainer = ({ data }) => {
         onClick={dismissFilter}
         className="bg-black opacity-50 fixed top-0 z-0 hidden w-[100vw] h-[100vh]"
       ></div>
+      <a href="#" title="Go to Top" className="fixed bottom-16 right-12 rounded-full p-5 dark:bg-[#2b3945] cursor-pointer shadow-md hover:animate-bounce shadow-black"><FaArrowUp /></a>
     </>
   )
 }

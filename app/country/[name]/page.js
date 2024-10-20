@@ -1,21 +1,16 @@
+import BackButton from "@/app/components/BackButton"
 import Navbar from "@/app/components/Navbar"
 import React from "react"
-import { FaArrowLeftLong } from "react-icons/fa6"
 
 
 const page = async ({ params }) => {
-  const countryData = await (await fetch(`https://restcountries.com/v3.1/name/${params.name}`)).json()
-  console.log(countryData[0])
+  const countryData = await (await fetch(`https://restcountries.com/v3.1/name/${params.name}?fullText=true`)).json()
 
   return (
     <div>
       <Navbar />
       <div className="mt-16 mx-auto w-[85%]">
-        <div className="BackButton">
-          <button className="flex items-center justify-center rounded-lg shadow-md gap-2 p-2 px-7 cursor-pointer dark:hover:bg-[#222f3a] shadow-black dark:bg-[#2b3945]">
-            <FaArrowLeftLong /> Back
-          </button>
-        </div>
+        <BackButton/>
         <div className="details mt-20 flex gap-x-16">
           <div className="image-container overflow-hidden">
             <img src={countryData[0].flags.svg} className="w-[500px] h-[300px] object-cover" />
@@ -25,7 +20,7 @@ const page = async ({ params }) => {
             <div className="upper-details pt-5 flex justify-between w-[500px]">
               <div className="left-details">
                 <div className="mt-5 text-sm font-light">
-                  <span className="mr-1 font-bold">Native Name:</span> Pakistan
+                  <span className="mr-1 font-bold">Native Name:</span> {Object.values(countryData[0].name.nativeName)[0].common}
                 </div>
                 <div className="mt-5 text-sm font-light">
                   <span className="mr-1 font-bold">Population:</span> {countryData[0].population}
@@ -54,8 +49,10 @@ const page = async ({ params }) => {
             </div>
             <div className="border-detials mt-6 flex gap-4 w-[500px] flex-wrap">
               <div className=" rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 shadow-black">Borders : </div>
-              {countryData[0].borders?.map((border, index)=>{
-              return <div key={index} className="border-name rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 cursor-pointer shadow-black">{border}</div>
+              {countryData[0].borders?.map(async (border, index)=>{
+                console.log("from border res" , border);
+                const BorderName = (await (await fetch(`https://restcountries.com/v3.1/alpha?codes=${border}`)).json())[0].name.common
+              return <a href={`/country/${BorderName}`} key={index} className="border-name rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 cursor-pointer shadow-black">{BorderName}</a>
               })}
             </div>
           </div>

@@ -16,7 +16,7 @@ const Card = ({ countryData }) => {
       <div className="short-info pl-5">
         <div>
           <span className="font-semibold">Population: </span>
-          {countryData.population}
+          {Number(countryData.population).toLocaleString()}
         </div>
         <div>
           <span className="font-semibold">Region: </span>

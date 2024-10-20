@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container py-4 shadow-md dark:bg-[#2b3945]">
       <div className="navbar flex justify-between max-w-[85%] mx-auto">
-        <div className="content font-semibold text-2xl">Where in the world?</div>
+        <a href="/" className="content font-semibold text-2xl">Where in the world?</a>
         <div className="dark-mode flex items-center text-lg cursor-pointer gap-1" onClick={toogleDarkMode}>
           <MdOutlineDarkMode />
           <span className="color-text">Dark Mode</span>

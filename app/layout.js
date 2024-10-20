@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="font-['Poppins',sans-serif]">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#202c37] dark:text-white`}>
-        <NextTopLoader color="#2299DD"/>
+        <NextTopLoader color="#2299DD" initialPosition={0.4}/>
         {children} 
       </body>
     </html>
