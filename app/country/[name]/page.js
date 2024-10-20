@@ -23,7 +23,7 @@ const page = async ({ params }) => {
                   <span className="mr-1 font-bold">Native Name:</span> {Object.values(countryData[0].name.nativeName)[0].common}
                 </div>
                 <div className="mt-5 text-sm font-light">
-                  <span className="mr-1 font-bold">Population:</span> {countryData[0].population}
+                  <span className="mr-1 font-bold">Population:</span> {Number(countryData[0].population).toLocaleString("en-PK")}
                 </div>
                 <div className="mt-5 text-sm font-light">
                   <span className="mr-1 font-bold">Region:</span> {countryData[0].region}
