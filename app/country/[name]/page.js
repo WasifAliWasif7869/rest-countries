@@ -60,7 +60,7 @@ const page = async ({ params }) => {
           </div>
         </div>
       </div>
-    <Script>
+    <Script id="titleSetter">
     document.title = `{countryData[0].name.common} - Countries REST API JS Project`
   </Script>
   </div>
