@@ -1,16 +1,18 @@
 import BackButton from "@/app/components/BackButton"
 import Navbar from "@/app/components/Navbar"
+import Script from "next/script"
 import React from "react"
+
 
 
 const page = async ({ params }) => {
   const countryData = await (await fetch(`https://restcountries.com/v3.1/name/${params.name}?fullText=true`)).json()
-
   return (
     <div>
       <Navbar />
+      
       <div className="mt-16 mx-auto w-[85%]">
-        <BackButton/>
+        <BackButton />
         <div className="details mt-20 flex gap-x-16">
           <div className="image-container overflow-hidden">
             <img src={countryData[0].flags.svg} className="w-[500px] h-[300px] object-cover" />
@@ -49,20 +51,21 @@ const page = async ({ params }) => {
             </div>
             <div className="border-detials mt-6 flex gap-4 w-[500px] flex-wrap">
               <div className=" rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 shadow-black">Borders : </div>
-              {countryData[0].borders?.map(async (border, index)=>{
-                console.log("from border res" , border);
+              {countryData[0].borders?.map(async (border, index) => {
+                console.log("from border res", border);
                 const BorderName = (await (await fetch(`https://restcountries.com/v3.1/alpha?codes=${border}`)).json())[0].name.common
-              return <a href={`/country/${BorderName}`} key={index} className="border-name rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 cursor-pointer shadow-black">{BorderName}</a>
+                return <a href={`/country/${BorderName}`} key={index} className="border-name rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 cursor-pointer shadow-black">{BorderName}</a>
               })}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <Script>
+    document.title = `{countryData[0].name.common} - Countries REST API JS Project`
+  </Script>
+  </div>
+
   )
-}
-export const metadata = {
-  title: `Country Details - JS Project`,
 }
 
 export default page
