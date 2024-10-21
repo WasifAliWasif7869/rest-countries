@@ -13,13 +13,13 @@ const page = async ({ params }) => {
 
       <div className="mt-16 mx-auto w-[85%]">
         <BackButton />
-        <div className="details mt-20 flex gap-x-16">
+        <div className="details mt-8 sm:mt-20 flex flex-col sm:flex-row gap-x-16">
           <div className="image-container overflow-hidden">
-            <img src={countryData[0].flags.svg} className="w-[500px] h-[300px] object-cover" />
+            <img src={countryData[0].flags.svg} className="sm:w-[500px] sm:h-[300px] w-[90vw] h-[30vh] object-contain object-center" />
           </div>
           <div className="other-details">
-            <div className="font-medium text-3xl">{countryData[0].name.common}</div>
-            <div className="upper-details pt-5 flex justify-between w-[500px]">
+            <div className="font-medium text-2xl sm:text-3xl">{countryData[0].name.common}</div>
+            <div className="upper-details pt-5 flex flex-col sm:flex-row gap-10 sm:gap-0 justify-between sm:w-[500px]">
               <div className="left-details">
                 <div className="mt-5 text-sm font-light">
                   <span className="mr-1 font-bold">Native Name:</span> {Object.values(countryData[0].name.nativeName)[0].common}
@@ -49,7 +49,7 @@ const page = async ({ params }) => {
                 </div>
               </div>
             </div>
-            <div className="border-detials mt-6 flex gap-4 w-[500px] flex-wrap">
+            <div className="border-detials mt-6 flex gap-4 w-[80vw] sm:w-[500px] flex-wrap">
               <div className=" rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 shadow-black">Borders : </div>
               {countryData[0].borders?.map(async (border, index) => {
                 const BorderName = (await (await fetch(`https://restcountries.com/v3.1/alpha?codes=${border}`)).json())[0].name.common
