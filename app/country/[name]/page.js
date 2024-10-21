@@ -10,7 +10,7 @@ const page = async ({ params }) => {
   return (
     <div>
       <Navbar />
-      
+
       <div className="mt-16 mx-auto w-[85%]">
         <BackButton />
         <div className="details mt-20 flex gap-x-16">
@@ -52,7 +52,6 @@ const page = async ({ params }) => {
             <div className="border-detials mt-6 flex gap-4 w-[500px] flex-wrap">
               <div className=" rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 shadow-black">Borders : </div>
               {countryData[0].borders?.map(async (border, index) => {
-                console.log("from border res", border);
                 const BorderName = (await (await fetch(`https://restcountries.com/v3.1/alpha?codes=${border}`)).json())[0].name.common
                 return <a href={`/country/${BorderName}`} key={index} className="border-name rounded-lg dark:bg-[#2b3945] shadow-sm p-1 px-3 cursor-pointer shadow-black">{BorderName}</a>
               })}
@@ -60,10 +59,10 @@ const page = async ({ params }) => {
           </div>
         </div>
       </div>
-    <Script id="titleSetter">
-    document.title = `{countryData[0].name.common} - Countries REST API JS Project`
-  </Script>
-  </div>
+      <Script id="titleSetter">
+        document.title = `{countryData[0].name.common} - Countries REST API JS Project`
+      </Script>
+    </div>
 
   )
 }

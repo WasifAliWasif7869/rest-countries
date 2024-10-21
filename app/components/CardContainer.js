@@ -66,10 +66,10 @@ const CardContainer = ({ data }) => {
 
   return (
     <>
-      <div className="bg-[#f3f2f0] p-4 pt-14 dark:bg-[#202c37]">
-        <div className="search-filter flex justify-between items-center max-w-[85%] mx-auto">
+      <div className="bg-[#f3f2f0] sm:p-4 pt-14 dark:bg-[#202c37]">
+        <div className="search-filter flex flex-col sm:flex-row sm:justify-between justify-center gap-10 items-start max-w-[85%] mx-auto">
           <div
-            className="search dark:bg-[#2b3945] bg-white flex p-4 gap-2 px-6 rounded-sm"
+            className="search dark:bg-[#2b3945] bg-white flex sm:p-4 gap-2 sm:px-6 p-3 rounded-sm"
             onClick={(e) => {
               e.currentTarget.children[1].focus()
             }}
@@ -81,7 +81,7 @@ const CardContainer = ({ data }) => {
               type="text"
               name="country"
               id="search"
-              className="dark:bg-inherit outline-none border-none w-[300px]"
+              className="dark:bg-inherit outline-none border-none w-[250px] sm:w-[300px]"
               placeholder="Search for a country..."
             />
           </div>
